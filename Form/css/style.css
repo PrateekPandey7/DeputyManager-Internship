@@ -1,0 +1,68 @@
+p
+{
+	font-family: helvetica, sans-serif;
+	margin: 5px 160px 5px 160px;
+}
+
+form
+{
+	font-family: helvetica, sans-serif;
+	background: #f4f7f8;
+	margin: 5px 160px 5px 160px;
+	max-width: 1005px;
+}
+
+td input
+{
+	width: 117px;
+}
+
+input[type=number]
+{
+	width: 20px;
+}
+
+.extra
+{
+	margin-left: 40px;
+}
+
+input[type=radio]
+{
+	float: none;
+	width: 320px;
+}
+
+.heading
+{
+	text-align: center;
+	font-style: bold;
+	font-size: 150%;
+}
+
+input[type=text],textarea
+{
+	margin-top: 5px;
+	padding: 5px 5px 5px 5px;
+	font-size: 25px;
+	border-radius: 5px;
+	border: 1px solid grey;
+	width: 320px;
+}
+
+label
+{
+	position: relative;;
+	top: 12px;
+	width: 450px;
+	float: left;
+}
+
+input[type=file]
+{
+  font-size: 10px;
+  padding:10px;
+  background:#2d2d2d;
+}
+
+

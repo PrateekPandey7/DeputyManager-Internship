@@ -1,0 +1,232 @@
+<!doctype html>
+
+<html lang="en">
+  
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <title>Application Form For Deputy Manager</title>
+
+  
+  
+  </head>
+  
+  <body>
+
+    <div class = "heading">
+      
+      <p class = "heading1">APPLICATION FORM FOR DEPUTY MANAGER</p>
+      <p class = "heading2">BASIC INFORMATION</p>
+    
+    </div>
+
+    <div class = "container">
+
+      <?php echo $error ?>
+
+      <form method = "post">
+
+        <fieldset>
+
+          <div class = "form-group">
+            <label for = "name">1. Name of the Post Applied for:</label>
+            <input id = "name" type = "text" name = "name">
+          </div>
+
+          <div class = "form-group">
+            <label for = "fname">2. Full Name of the Candidate(in Capitals):</label>
+            <input id = "fname" type = "text" name = "fname">
+          </div>
+
+          <div class = "form-group">
+            <label for = "dob">3. Date of Birth:</label>
+            <input id = "dob" type = "text" name = "dob">
+          </div>
+
+          <div class = "form-group">
+            <label for = "gender">4. Gender:(Write '1' for Male, '2' for Female):</label>
+            <input id = "gender" type = "text" name = "gender">
+          </div>
+
+          <div class = "form-group">
+            <label for = "maritalstatus">5. Marital Status:</label>
+            <input id = "maritalstatus" type = "text" name = "maritalstatus">
+          </div>
+
+          <div class = "form-group">
+            <label for = "fhname">6. Father's/Husband's Name:</label>
+            <input id = "fhname" type = "text" name= "fhname">
+          </div>
+
+          <div class = "form-group">
+            <label for = "address">7. Mailing Address(in block letters):</label>
+            <textarea id = "address" name = "address"></textarea>
+            <div class = "extra">
+              <label for = "pincode">Pin Code:</label>
+              <input id = "pincode" type = "textbox" name = "pincode">
+              <label for = "telno">Tel. No:</label>
+              <input id = "telno" type = "textbox" name = "telno">
+              <label for = "mobile">Mobile:</label>
+              <input id = "mobile" type = "textbox" name = "mobile">
+              <label for = "email">Email ID:</label>
+              <input id = "email" type = "textbox" name = "email">
+            </div>
+          </div>
+
+          <div class = "form-group">
+            <label for = "nationality">8. Nationality:</label>
+            <input id = "nationality" type = "text" name = "nationality">
+          </div>
+
+          <div class = "form-group">
+            <label for = "aadhar">9. Aadhar Number</label>
+            <input id = "aadhar" type = "text" name = "aadhar">
+          </div>
+          <div class = "form-group">
+            <label for = "handicapped">10. Whether Physical Handicapped?:(Write '1' for Yes, '2' for No)</label>
+            <input id = "handicapped" type = "text" name = "handicapped">
+          </div>
+          <div class = "form-group">
+            <p>11. Category(please tick):</p>
+            <label for="radio1" class ="extra">SC</label><input type="radio" id="radio1" name="radio" >
+            <label for="radio2" class = "extra">ST</label><input type="radio" id="radio3" name="radio">
+            <label for="radio3" class = "extra">OBC</label><input type="radio" id="radio3" name="radio">
+            <label for="radio4" class = "extra">General</label><input type="radio" id="radio2" name="radio" checked="checked">
+          </div>
+
+          <div class = "form-group">
+            <label for = "education">12. All Educational/other professional Qualifications/Training Courses etc/Degree Examination onwards:</label>
+            <input type = "text" id = "education" name = "education"></input>
+          </div>
+
+          <div class = "form-group">
+            <label for="photo">Photo</label>
+            <input type="file" name = "photo"accept="image/*" onChange="readURL(this);">
+          </div>
+
+          <div class = "form-group">
+            <label for="sphoto">Signature</label>
+            <input type="file" name = "sphoto" accept="image/*" onChange="readURL(this);">
+          </div>
+
+          <p>I hereby declare that all the statements made in the application are true and complete to the best of my knowldege and belief. I understand that action can be taken against me by the Commission, if I am declared by them to be guilty of nay misconduct mentioned herein. I have informed my Hed Office/Deptt, in writing that I am applying for this selection.</p>
+
+          <div class = "form-group">
+            <center><input type = "submit" id = "submit" name = "submit" value = "Submit"></center>  
+          </div>
+
+        </fieldset>
+
+      </form>
+
+    </div>
+
+      <script>
+          
+          function readURL(input) 
+          {
+                if (input.files && input.files[0]) 
+                {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) 
+                    {
+                        $('#blah')
+                            .attr('src', e.target.result);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+      </script>
+
+  </body>
+
+</html>
+
+<?php
+
+$error = '';
+$name = '';$fname = '';$dob = '';$gender = '';$maritalstatus = '';$fhname = '';$address = '';$pincode = '';$telno = '';$mobile = '';$email = '';$nationality = '';$aadhar = '';$handicapped = '';$category = '';
+
+function clean_text($string)
+{
+  $string = trim($string);
+  $string = stripslashes($string);
+  $string = htmlspecialchars($string);
+  return $string;
+}
+
+if(isset($_POST["submit"]))
+{
+  if(empty($_POST["name"]))
+  {
+    $error .= '<p><label class="text-danger">Please Enter your Name</label></p>';
+  }
+  else
+  {
+    $name = clean_text($_POST["name"]);
+    if(!preg_match("/^[a-zA-Z ]*$/",$name))
+    {
+      $error .= '<p><label class="text-danger">Only letters and white space allowed</label></p>';
+    }
+  }
+  if(empty($_POST["email"]))
+  {
+    $error .= '<p><label class="text-danger">Please Enter your Email</label></p>';
+  }
+  else
+  {
+    $email = clean_text($_POST["email"]);
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+    {
+      $error .= '<p><label class="text-danger">Invalid email format</label></p>';
+    }
+  }
+  if(empty($_POST["address"]))
+  {
+    $error .= '<p><label class="text-danger">Address is required</label></p>';
+  }
+  else
+  {
+    $address = clean_text($_POST["address"]);
+  }
+  if(empty($_POST["aadhar"]))
+  {
+    $error .= '<p><label class="text-danger">Aadhar is required</label></p>';
+  }
+  else
+  {
+    $aadhar = clean_text($_POST["aadhar"]);
+  }
+
+  if($error == '')
+  {
+    $file_open = fopen("contact_data.csv", "a");
+    $no_rows = count(file("contact_data.csv"));
+    if($no_rows > 1)
+    {
+      $no_rows = ($no_rows - 1) + 1;
+    }
+    $form_data = array(
+      'sr_no'   =>  $no_rows,
+      'name'    =>  $name,
+      'email'   =>  $email,
+      'address' =>  $address,
+      'aadhar' =>  $aadhar
+    );
+    fputcsv($file_open, $form_data);
+    $error = '<label class="text-success">Your Information has been recorded.</label>';
+    $name = '';$fname = '';$dob = '';$gender = '';$maritalstatus = '';$fhname = '';$address = '';$pincode = '';$telno = '';$mobile = '';$email = '';$nationality = '';$aadhar = '';$handicapped = '';$category = '';    
+  }
+}
+
+?>
